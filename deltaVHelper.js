@@ -26,11 +26,11 @@ deltaVHelper.prototype.infoFormat = function(object) {
     });
   }*/
 
-  return _.template('for a stable low orbit of ${name} you will need about ${orbit} meters per second and to land you will need about ${land} meters per second of delta V')({
+  return _.template('For a stable low orbit of ${name} you will need about ${orbit} meters per second and to land you will need about ${land} meters per second of delta V')({
     info: info,
     name: object.name,
-    orbit: object.orbit,
-    land: object.land
+    orbit: object.deltaV.orbit,
+    land: object.deltaV.land
   });
 };
 
