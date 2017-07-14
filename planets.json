@@ -1,0 +1,157 @@
+{
+  "body":{
+    "kerbin":{
+      "name": "Kerbin",
+      "deltaV":{
+        "orbit": 3400,
+        "land": 0
+      },
+      "type": "planet",
+      "orbits": "Kerbol"
+    },
+    "mun":{
+      "name": "Mun",
+      "deltaV":{
+        "orbit": 4570,
+        "land": 5150
+      },
+      "type": "moon",
+      "orbits": "Kerbin"
+    },
+    "minmus":{
+      "name": "Minmus",
+      "deltaV":{
+        "orbit": 4490,
+        "land": 4670
+      },
+      "type": "moon",
+      "orbits": "Kerbin"
+    },
+    "kerbol":{
+      "name": "Kerbol",
+      "deltaV": {
+        "orbit": 4350,
+        "land": 91050
+      },
+      "type": "star",
+      "orbits": null
+    },
+    "moho":{
+      "name": "Moho",
+      "deltaV":{
+        "orbit": 7520,
+        "land": 8390
+      },
+      "type": "planet",
+      "orbits": "Kerbol"
+    },
+    "eve":{
+      "name": "Eve",
+      "deltaV":{
+        "orbit": 5850,
+        "land": 13850
+      },
+      "type": "planet",
+      "orbits": "Kerbol"
+    },
+    "gilly":{
+      "name": "Gilly",
+      "deltaV":{
+        "orbit": 4990,
+        "land": 5020
+      },
+      "type": "moon",
+      "orbits": "Eve"
+    },
+    "duna":{
+      "name": "Duna",
+      "deltaV":{
+        "orbit": 5090,
+        "land": 6540
+      },
+      "type": "planet",
+      "orbits": "Kerbol"
+    },
+    "ike":{
+      "name": "Ike",
+      "deltaV":{
+        "orbit": 4940,
+        "land": 5330
+      },
+      "type": "moon",
+      "orbits": "Duna"
+    },
+    "dres":{
+      "name": "Dres",
+      "deltaV":{
+        "orbit": 6250,
+        "land": 6680
+      },
+      "type": "planet",
+      "orbits": "Kerbol"
+    },
+    "jool":{
+      "name": "Jool",
+      "deltaV":{
+        "orbit": 8300,
+        "land": 22300
+      },
+      "type": "planet",
+      "orbits": "Kerbol"
+    },
+    "pol":{
+      "name": "Pol",
+      "deltaV":{
+        "orbit": 6470,
+        "land": 6600
+      },
+      "type": "moon",
+      "orbits": "Jool"
+    },
+    "bop":{
+      "name": "Bop",
+      "deltaV":{
+        "orbit": 6610,
+        "land": 6840
+      },
+      "type": "moon",
+      "orbits": "Jool"
+    },
+    "tylo":{
+      "name": "Tylo",
+      "deltaV":{
+        "orbit": 6990,
+        "land": 9260
+      },
+      "type": "moon",
+      "orbits": "Jool"
+    },
+    "vall":{
+      "name": "Vall",
+      "deltaV":{
+        "orbit": 7020,
+        "land": 7880
+      },
+      "type": "moon",
+      "orbits": "Jool"
+    },
+    "laythe":{
+      "name": "Laythe",
+      "deltaV":{
+        "orbit": 7490,
+        "land": 10390
+      },
+      "type": "moon",
+      "orbits": "Jool"
+    },
+    "eeloo":{
+      "name": "Eeloo",
+      "deltaV":{
+        "orbit": 6860,
+        "land": 7480
+      },
+      "type": "planet",
+      "orbits": "Kerbol"
+    }
+  }
+}
