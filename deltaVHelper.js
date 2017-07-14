@@ -14,7 +14,7 @@ deltaVHelper.prototype.getObject = function(name) {
 }
 
 deltaVHelper.prototype.infoFormat = function(object) {
-  var info;
+  //var info;
 
   /*if(object.type === 'moon') {
     info = _.template('only moon of ${orbits}.')({
@@ -27,7 +27,6 @@ deltaVHelper.prototype.infoFormat = function(object) {
   }*/
 
   return _.template('For a stable low orbit of ${name} you will need about ${orbit} meters per second and to land you will need about ${land} meters per second of delta V')({
-    info: info,
     name: object.name,
     orbit: object.deltaV.orbit,
     land: object.deltaV.land

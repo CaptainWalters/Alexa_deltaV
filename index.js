@@ -2,7 +2,7 @@
 module.change_code = 1;
 var _ = require('lodash');
 var Alexa = require('alexa-app');
-var app = new Alexa.app('planetsinfo');
+var app = new Alexa.app('kspdeltaV');
 var deltaVHelper = require('./deltaVHelper');
 
 app.launch(function(req, res) {
@@ -10,7 +10,7 @@ app.launch(function(req, res) {
   res.say(prompt).reprompt(prompt).shouldEndSession(false);
 });
 
-app.intent('planetsinfo', {
+app.intent('deltavinfo', {
  'slots': {
     'BODYNAME': 'PLANETARYNAMES'
   },
@@ -25,14 +25,14 @@ app.intent('planetsinfo', {
       res.say(prompt).reprompt(reprompt).shouldEndSession(false);
       return true;
     } else {
-      var deltaVHelper = new deltaVHelper();
+      var vHelper = new deltaVHelper();
       try {
-        var body = deltaVHelper.getObject(bodyname)
+        var body = vHelper.getObject(bodyname)
       } catch (err) {
         var prompt = 'I don\'t have data for this body';
         res.say(prompt).reprompt(reprompt).shouldEndSession(false).send();
       }
-      res.say(deltaVHelper.infoFormat(body));
+      res.say(vHelper.infoFormat(body));
       return false;
     }
   }
