@@ -4,12 +4,12 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 const planets = require('../planets.json');
-var planetsHelper = require('../planetsHelper');
+var deltaVHelper = require('../deltaVHelper');
 chai.config.includeStack = true;
 
 
-describe('planetsHelper', function() {
-  var subject = new planetsHelper();
+describe('deltaVHelper', function() {
+  var subject = new deltaVHelper();
   var bodyname;
   describe('getObject function', function() {
     context('with an invalid object name', function() {
@@ -24,21 +24,22 @@ describe('planetsHelper', function() {
         try {
           subject.getObject(bodyname);
         } catch (err) {
-          expect(err.message).to.equal('This is not a listed Solar system body');
+          expect(err.message).to.equal('This is not a listed Kerbol system body');
         }
       });
     });
     context('with a valid *uppercase* object name', function() {
       it('returns matching object name', function() {
-        bodyname = 'JUPITER';
+        bodyname = 'KERBIN';
         var body = subject.getObject(bodyname);
         return expect(body.name.toLowerCase()).to.equal(bodyname.toLowerCase());
       });
     });
     context('with a valid *lowercase* object name', function() {
       it('returns matching object name', function() {
-        bodyname = 'moon';
-        return expect(planets.body[bodyname].name.toLowerCase()).to.equal(bodyname);
+        bodyname = 'mun';
+        var body = subject.getObject(bodyname);
+        return expect(body.name.toLowerCase()).to.equal(bodyname.toLowerCase());
       });
     });
   });
@@ -51,20 +52,18 @@ describe('planetsHelper', function() {
     });
     context('with a valid object name', function() {
       it('returns matching object name', function() {
-        bodyname = 'Moon';
+        bodyname = 'Mun';
         return expect(planets.body[bodyname.toLowerCase()].name).to.equal(bodyname);
       });
     });
   });
-  describe('planetsFormat function', function() {
+  /*describe('planetsFormat function', function() {
     var pluto = {
-      "name": "Pluto",
-      "colour": "light brown",
-      "size": 2374,
-      "type": "dwarf planet",
-      "orbits": "Sun",
-      "hop": "ninth"
-    };
+      "name": "Mona",
+      "deltaV":{
+        "orbit": 12400,
+        "land": 32000
+      };
     context('using Pluto as a planet', function() {
       it('formats to state hop', function() {
         pluto.type = 'planet';
@@ -83,5 +82,5 @@ describe('planetsHelper', function() {
         return expect(subject.planetsFormat(body)).to.eq('Moon is the only moon of Earth. It is approximately 3474 kilometers in diameter, and appears grey when viewed from space.');
       });
     });
-  });
+  });*/
 });
