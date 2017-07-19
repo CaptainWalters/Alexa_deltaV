@@ -57,14 +57,31 @@ describe('deltaVHelper', function() {
       });
     });
   });
-  /*describe('planetsFormat function', function() {
-    var pluto = {
+  describe('planetsFormat function', function() {
+    var mona = {
       "name": "Mona",
       "deltaV":{
         "orbit": 12400,
         "land": 32000
-      };
-    context('using Pluto as a planet', function() {
+      },
+      "type": "planet",
+      "orbits": "Kerbol"
+    };
+    context('Using Mona for orbital info', function() {
+      it('returns orbit m/s', function() {
+        var body = mona;
+        var journey = 'orbit'
+        return expect(subject.infoFormat(body, journey)).to.eq('For a stable low orbit of Mona you will need about 12400 meters per second of delta V');
+      });
+    });
+    context('Using Mona for landing info', function() {
+      it('returns land m/s', function() {
+        var body = mona;
+        var journey = 'land'
+        return expect(subject.infoFormat(body, journey)).to.eq('To land on Mona you will need about 32000 meters per second of delta V');
+      });
+    });
+    /*context('using Pluto as a planet', function() {
       it('formats to state hop', function() {
         pluto.type = 'planet';
         return expect(subject.planetsFormat(pluto)).to.eq('Pluto is the ninth planet from the Sun. It is approximately 1187 kilometers in diameter, and appears light brown when viewed from space.');
@@ -81,6 +98,6 @@ describe('deltaVHelper', function() {
         var body = subject.getObject('Moon');
         return expect(subject.planetsFormat(body)).to.eq('Moon is the only moon of Earth. It is approximately 3474 kilometers in diameter, and appears grey when viewed from space.');
       });
-    });
-  });*/
+    });*/
+  });
 });

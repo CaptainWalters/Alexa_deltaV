@@ -22,7 +22,7 @@ deltaVHelper.prototype.infoFormat = function(object, journey) {
       orbit: object.deltaV.orbit
     });
   } else if (journey === 'land') {
-    info = _.template('To land you will need about ${land} meters per second of delta V')({
+    info = _.template('To land on ${name} you will need about ${land} meters per second of delta V')({
       name: object.name,
       land: object.deltaV.land
     });
