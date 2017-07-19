@@ -13,23 +13,24 @@ deltaVHelper.prototype.getObject = function(name) {
   }
 }
 
-deltaVHelper.prototype.infoFormat = function(object) {
-  //var info;
+deltaVHelper.prototype.infoFormat = function(object, journey) {
+  var info;
 
-  /*if(object.type === 'moon') {
-    info = _.template('only moon of ${orbits}.')({
-      orbits: object.orbits
+  if (journey === 'orbit') {
+    info = _.template('For a stable low orbit of ${name} you will need about ${orbit} meters per second of delta V')({
+      name: object.name,
+      orbit: object.deltaV.orbit
+    });
+  } else if (journey === 'land') {
+    info = _.template('To land you will need about ${land} meters per second of delta V')({
+      name: object.name,
+      land: object.deltaV.land
     });
   } else {
-    info = _.template('${hop} planet from the Sun.')({
-      hop: object.hop
-    });
-  }*/
-
-  return _.template('For a stable low orbit of ${name} you will need about ${orbit} meters per second and to land you will need about ${land} meters per second of delta V')({
-    name: object.name,
-    orbit: object.deltaV.orbit,
-    land: object.deltaV.land
+    info = _.template('There has been an error')
+  }
+  return _.template('${info}')( {
+    info: info
   });
 };
 
