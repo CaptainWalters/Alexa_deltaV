@@ -11,7 +11,7 @@ deltaVHelper.prototype.getObject = function(name) {
   } else {
     return planets.body[name];
   }
-}
+};
 
 deltaVHelper.prototype.infoFormat = function(object, journey) {
   var info;
@@ -27,7 +27,7 @@ deltaVHelper.prototype.infoFormat = function(object, journey) {
       land: object.deltaV.land
     });
   } else {
-    info = _.template('There has been an error')
+    info = _.template('There has been an error');
   }
   return _.template('${info}')( {
     info: info
