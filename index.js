@@ -15,13 +15,12 @@ app.intent('deltavinfo', {
     'BODYNAME': 'PLANETARYNAMES',
     'JOURNEY': 'JOURNEYTYPE'
   },
-  'utterances': ['{-|BODYNAME} {-|JOURNEY}']
+  'utterances': ['{|to} {-|JOURNEY} {|on} {|around} {-|BODYNAME}']
 },
   function(req, res) {
     //get the slots
     var bodyname = req.slot('BODYNAME');
     var journey = req.slot('JOURNEY');
-    var body;
     var reprompt = 'Tell me a planetary name and the journey type to get delta V information.';
     if (_.isEmpty(bodyname)) {
       var prompt = 'I didn\'t hear a name. Tell me a planetary name.';
@@ -34,12 +33,12 @@ app.intent('deltavinfo', {
     } else {
       var vHelper = new deltaVHelper();
       try {
-        body = vHelper.getObject(bodyname);
+        var body = vHelper.getObject(bodyname);
+        res.say(vHelper.infoFormat(body, journey));
       } catch (err) {
         var prompt = 'I don\'t have data for this body';
         res.say(prompt).reprompt(reprompt).shouldEndSession(false).send();
       }
-      res.say(vHelper.infoFormat(body, journey));
       return false;
     }
   }
