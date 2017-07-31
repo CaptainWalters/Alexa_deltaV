@@ -15,13 +15,13 @@ app.intent('deltavinfo', {
     'BODYNAME': 'PLANETARYNAMES',
     'JOURNEY': 'JOURNEYTYPE'
   },
-  'utterances': ['{|to} {-|JOURNEY} {|on} {|around} {-|BODYNAME}']
+  'utterances': ['{|to} {-|JOURNEY} {|on|around|at} {-|BODYNAME} {|how much delta V} {|would it take|do I need|would I need}', '{|how much} {|delta V} {would it take|do I need|would I need} to {-|JOURNEY} {|on|around|at} {-|BODYNAME}']
 },
   function(req, res) {
     //get the slots
     var bodyname = req.slot('BODYNAME');
     var journey = req.slot('JOURNEY');
-    var reprompt = 'Tell me a planetary name and the journey type to get delta V information.';
+    var reprompt = 'Tell me a journey type and the planetary name to get information on the delta V.';
     if (_.isEmpty(bodyname)) {
       var prompt = 'I didn\'t hear a name. Tell me a planetary name.';
       res.say(prompt).reprompt(reprompt).shouldEndSession(false);
