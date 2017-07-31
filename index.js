@@ -45,8 +45,8 @@ app.intent('deltavinfo', {
 );
 
 app.intent('AMAZON.HelpIntent', function(request, response) {
-  var speechOutput = 'To get the average delta v to any planet or moon, tell me a journey type and a pplanetary name' +
-    'For example, to get the delta V for orbiting Jool say, orbit, Jool';
+  var speechOutput = 'To get the average delta v to any planet or moon, tell me a journey type and a planetary name. ' +
+    'For example, to get the delta V for orbiting Jool you could say, orbit around Jool';
   response.say(speechOutput);
 });
 
