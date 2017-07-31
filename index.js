@@ -21,7 +21,7 @@ app.intent('deltavinfo', {
     //get the slots
     var bodyname = req.slot('BODYNAME');
     var journey = req.slot('JOURNEY');
-    var reprompt = 'Tell me a journey type and the planetary name to get information on the delta V.';
+    var reprompt = 'Tell me a journey type and the planetary name to get information for the delta V.';
     if (_.isEmpty(journey)) {
     var prompt = 'I didn\'t hear a journey type. Do you wish to orbit or land?';
     res.say(prompt).reprompt(reprompt).shouldEndSession(false);
@@ -37,12 +37,26 @@ app.intent('deltavinfo', {
         res.say(vHelper.infoFormat(body, journey));
       } catch (err) {
         var prompt = 'I don\'t have data for this body';
-        res.say(prompt).reprompt(reprompt).shouldEndSession(false).send();
+        res.say(prompt).reprompt(reprompt).shouldEndSession(true).send();
       }
       return false;
     }
   }
 );
+
+app.intent('AMAZON.HelpIntent', function(request, response) {
+  var speechOutput = 'To get the average delta v to any planet or moon, tell me a journey type and a pplanetary name' +
+    'For example, to get the delta V for orbiting Jool say, orbit, Jool';
+  response.say(speechOutput);
+});
+
+var exitFunction = function(request, response) {
+  var speechOutput = 'Goodbye!';
+  response.say(speechOutput);
+};
+
+app.intent('AMAZON.StopIntent', exitFunction);
+app.intent('AMAZON.CancelIntent', exitFunction);
 
 //hack to support custom utterances in utterance expansion string
 var utterancesMethod = app.utterances;
