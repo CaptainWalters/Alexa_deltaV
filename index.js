@@ -6,7 +6,7 @@ var app = new Alexa.app('kspdeltaV');
 var deltaVHelper = require('./deltaVHelper');
 
 app.launch(function(req, res) {
-  var prompt = 'For information on delta V, give me a planitary name and whether you wish to orbit or land';
+  var prompt = 'For information on delta V, tell me whether you wish to orbit or land at a specific planitary name.';
   res.say(prompt).reprompt(prompt).shouldEndSession(false);
 });
 
@@ -15,19 +15,19 @@ app.intent('deltavinfo', {
     'BODYNAME': 'PLANETARYNAMES',
     'JOURNEY': 'JOURNEYTYPE'
   },
-  'utterances': ['{|to} {-|JOURNEY} {|on} {|around} {-|BODYNAME}']
+  'utterances': ['{|to} {-|JOURNEY} {|on|around|at} {-|BODYNAME} {|how much delta V} {|would it take|do I need|would I need}', '{|how much} {|delta V} {would it take|do I need|would I need} to {-|JOURNEY} {|on|around|at} {-|BODYNAME}']
 },
   function(req, res) {
     //get the slots
     var bodyname = req.slot('BODYNAME');
     var journey = req.slot('JOURNEY');
-    var reprompt = 'Tell me a planetary name and the journey type to get delta V information.';
-    if (_.isEmpty(bodyname)) {
+    var reprompt = 'Tell me a journey type and the planetary name to get information on the delta V.';
+    if (_.isEmpty(journey)) {
+    var prompt = 'I didn\'t hear a journey type. Do you wish to orbit or land?';
+    res.say(prompt).reprompt(reprompt).shouldEndSession(false);
+    return true;
+    } else if (_.isEmpty(bodyname)) {
       var prompt = 'I didn\'t hear a name. Tell me a planetary name.';
-      res.say(prompt).reprompt(reprompt).shouldEndSession(false);
-      return true;
-    } else if (_.isEmpty(journey)) {
-      var prompt = 'I didn\'t hear a journey type. Do you wish to orbit or land?';
       res.say(prompt).reprompt(reprompt).shouldEndSession(false);
       return true;
     } else {
